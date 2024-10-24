@@ -425,6 +425,24 @@
         showPage(currentPage, 'right');
       }
     });
+
+    function preload_image(im_url) {
+        let img = new Image();
+        img.src = im_url;
+      }
+    const images = [
+        "https://cdn.rihimihi.com/1615bee632a54f3e8621dfd4752ffe4d.webp",
+        "https://cdn.rihimihi.com/cfa6a436e10241d1b5ad07010b7db159.webp",
+        "https://cdn.rihimihi.com/a9bf59e2b26c4441a3dd0ff880051c01.webp",
+        "https://cdn.rihimihi.com/2f15fe86a89940a3ac5c2adeac95a522.webp",
+        "https://cdn.rihimihi.com/de6b0326821d4a7283f64d973bc93a60.png",
+        "https://cdn.rihimihi.com/cbc6a793f49f42278afc1e605ba10d99.png",
+        "https://cdn.rihimihi.com/53bd5ffe63624a0d835c5cfd62e6a4f4.png"
+    ]
+
+    for (let i = 0; i < images.length; i++) {
+        preload_image(images[i]);
+    }
   </script>
 
 </body>
