@@ -1,453 +1,271 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.rimichan.com/">
-  <meta property="og:title" content="Rimi-Chan: Gacha Magic">
-  <meta property="og:description" content="☄️ Best Wish and Gacha Experience ✨ 7000+ Waifus ✨ Gleaming 3D Cards ✨ Exclusive Wish System ✨">
-  <meta property="og:image" content="https://cdn.rihimihi.com/9ca69f29e68641709e61e3ea03d23acd.webp">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#ff3366">
-  <meta name="keywords" content="Rimi-Chan, Rimi-Chan Discord, Rimi-Chan bot, Rimi Bot, 1041746861297520660, Rimi, Rimi-san, Hangout with Rimi">
-  <meta name="description" content="☄️ Best Wish and Gacha Experience ✨ 7000+ Waifus ✨ Gleaming 3D Cards ✨ Exclusive Wish System ✨">
-
-  <title>Rimi-Chan: Gacha Magic</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="https://cdn.rihimihi.com/50516cdd908b486ba3814ef689343a94.png">
-
-  <style>
-    /* Smooth fade-out for the welcome screen */
-    .fade-out {
-      animation: fadeOut 1.5s ease-in-out forwards;
+<style>
+    /* --- Main Theme Setup --- */
+    .rimi-wrapper {
+        /* New Soft Pastel Gradient Background */
+        background: linear-gradient(to bottom right, #ffe2e6, #e6e6fa, #d4f1f4);
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        padding: 30px 15px;
+        color: #4A3F45; /* Dark warm gray for general text - easy on eyes */
+        line-height: 1.8;
     }
 
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
+    .rimi-container {
+        max-width: 950px;
+        margin: auto;
+        /* Pure white container for best text contrast */
+        background-color: #ffffff; 
+        border-radius: 30px;
+        overflow: hidden;
+        /* Softer, colored shadow for cuteness */
+        box-shadow: 0 20px 60px rgba(202, 82, 131, 0.15);
     }
 
-    /* Smooth notebook appearance */
-    .fade-in {
-      opacity: 0;
-      transform: scale(0.9);
-      animation: fadeIn 0.6s ease-out forwards;
+    /* --- Typography & Headers --- */
+    .rimi-title {
+        font-size: 2.6rem;
+        /* Deep Pink for titles */
+        color: #d64b87; 
+        font-weight: 800;
+        text-align: center;
+        margin: 25px 0;
+        letter-spacing: -0.5px;
     }
 
-    /* Smooth notebook content appearance */
-    .fade-in2 {
-      opacity: 0;
-      transform: scale(0.95);
-      animation: fadeIn2 0.4s ease-out forwards;
+    .rimi-text {
+        font-size: 1.35rem;
+        color: #5a3e47; /* Softer dark brownish-pink for body text */
+        text-align: center;
+        padding: 0 25px;
+        max-width: 800px;
+        margin: auto;
     }
 
-    @keyframes fadeIn2 {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+    /* --- Layout Sections --- */
+    .section-card {
+        background: #ffffff;
+        margin: 30px;
+        padding: 35px;
+        border-radius: 25px;
+        /* subtle border to define the area */
+        border: 3px solid #fff0f5; 
     }
 
-
-    /* Sticky bars styling */
-    .sticky-top {
-      position: sticky;
-      top: 0;
-      z-index: 50;
+    /* --- Command Grid (How to Play) --- */
+    .command-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 35px;
     }
 
-    .sticky-bottom {
-      position: sticky;
-      bottom: 0;
-      z-index: 50;
+    .command-item {
+        background: #fff9fb;
+        border: 3px dashed #ffb6c1; /* Cuter dashed border */
+        padding: 25px;
+        border-radius: 25px;
+        font-size: 1.25rem;
+        color: #851640;
+        text-align: left;
     }
 
-    /* Custom button for interactivity */
-    .cool-button {
-      background-color: #ffb6c1;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease;
+    .command-item code {
+        background: #ff85a1; /* Brighter pink for code blocks */
+        color: white !important; /* White text on dark pink bg */
+        padding: 4px 12px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    .cool-button:hover {
-      background-color: #ff92aa;
+    /* --- Feature List --- */
+    .cute-list {
+        list-style: none;
+        padding: 0;
+        font-size: 1.35rem;
+        max-width: 850px;
+        margin: 30px auto;
     }
 
-    /* Notebook Styles */
-    .notebook-container {
-      width: 100%;
-      max-width: 700px;
-      height: 80vh;
-      background-color: white;
-      border: 1px solid #ffb6c1;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-    }
-/* Mobile view padding */
-@media only screen and (max-width: 767px) {
-  .notebook-container {
-    width: 95%; /* Adjust the padding value as needed */
-    height: 75vh;
-  }
-}
-
-    /* Pages inside the notebook */
-    .notebook-page {
-      width: 100%;
-      height: 100%;
-      background-color: #ffeff7;
-      padding: 20px;
-      position: absolute; 
-      transition: transform 0.6s ease;
-      backface-visibility: hidden;
-      border-left: 5px dotted #ffb6c1;
-      
-      margin-top: 1em;
-      background: linear-gradient(#fcdde1 .1em, transparent .1em);
-      background-size: 90% 1.3em;
+    .cute-list li {
+        margin-bottom: 15px;
+        padding: 15px 25px;
+        background: #fdfaff;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        border: 2px solid #f0e6ff;
     }
 
-    .notebook-page:nth-child(odd) {
-      transform: rotateY(0deg);
+    .icon-circle {
+        background: #fce8ee;
+        width: 55px;
+        height: 55px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-right: 20px;
+        font-size: 1.8rem;
+        flex-shrink: 0;
     }
 
-    .notebook-page:nth-child(even) {
-      transform: rotateY(180deg);
+    /* --- Images --- */
+    .rimi-img {
+        width: 100%;
+        border-radius: 25px;
+        display: block;
+        margin: 0 auto 25px auto;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
-    .flip {
-      transform: rotateY(180deg);
+    .image-grid-fx {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 30px 0;
     }
 
-    /* Controls */
-    .page-controls {
-      position: absolute;
-      width: 100%;
-      bottom: 0px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
+    @media (min-width: 768px) {
+        .image-grid-fx { grid-template-columns: repeat(2, 1fr); }
     }
 
-    .page-controls button {
-      background-color: #ffb6c1;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-      color: white;
-      border-top: 1px solid #ff92aa;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+    /* --- Buttons & Footer --- */
+    .invite-button {
+        display: block;
+        /* Cute Pink Gradient */
+        background: linear-gradient(135deg, #ff7eb3 0%, #ff758c 100%);
+        color: white !important;
+        text-decoration: none !important;
+        text-align: center;
+        padding: 22px;
+        font-size: 1.7rem;
+        font-weight: 800;
+        border-radius: 60px;
+        margin: 35px auto;
+        width: 85%;
+        max-width: 500px;
+        box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
+        transition: transform 0.2s ease-in-out;
     }
 
-    .page-controls button:hover {
-      background-color: #ff92aa;
+    .invite-button:hover {
+        transform: scale(1.04) translateY(-3px);
     }
 
-    .page-number {
-      margin-top: 6px;
-      font-weight: bold;
+    .footer-bar {
+        /* Darker pink footer for grounding the design */
+        background: linear-gradient(135deg, #c24a77, #851640);
+        color: white;
+        padding: 50px 25px;
+        text-align: center;
     }
+</style>
 
-    /* New Styles for Header and Footer */
-    .header-left {
-      display: flex;
-      align-items: center;
-    }
+<div class="rimi-wrapper">
+    <div class="rimi-container">
+        
+        <section class="section-card" style="background: #fff5f8;">
+            <img src="https://cdn.rihimihi.com/3eb97c0ab7b84484ad9dca1112b4737b.webp" class="rimi-img" alt="Xmas Showcase">
+            <h1 class="rimi-title">🌸 How to Play Rimi-Chan! 🌸</h1>
+            <p class="rimi-text">Welcome to the most magical card collecting game on Discord! Dive into a world of thousands of anime characters. It's easy to start and free to play!</p>
+            
+            <div class="command-grid">
+                <div class="command-item">
+                    <b>1. Setup</b><br>
+                    The default prefix is <code>.</code><br>
+                    Set a spawn channel with <code>.redirect</code>
+                </div>
+                <div class="command-item">
+                    <b>2. Collect</b><br>
+                    Cards spawn when chat is active!<br>
+                    Use <code>.claim [name]</code> or the <b>Button</b>.
+                </div>
+                <div class="command-item">
+                    <b>3. Drop & View</b><br>
+                    Drop cards every 15m: <code>.co</code><br>
+                    See your cards: <code>.list</code> or <code>.inv</code>
+                </div>
+                <div class="command-item">
+                    <b>4. Wish & Explore</b><br>
+                    Wish for rare cards: <code>.wish</code><br>
+                    Send characters on <code>.e</code> (Expeditions)!
+                </div>
+            </div>
 
-    .header-left img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-    }
+            <p class="rimi-text" style="margin-top: 30px; color: #d64b87; font-weight: bold;">
+                We host tons of events with lots of features! Just start from the basics and learn as you go.
+            </p>
+            <a href="https://discord.com/oauth2/authorize?client_id=1041746861297520660&scope=bot&permissions=532576332864" class="invite-button">✨ Invite Rimi-Chan Now ✨</a>
+        </section>
 
-    .header-right {
-      display: flex;
-      gap: 10px;
-    }
-    
-    .footer-links a {
-      color: #ff92aa;
-      text-decoration: none;
-    }
-
-    .footer-links a:hover {
-      text-decoration: underline;
-    }
-
-  </style>
-</head>
-<body class="bg-pink-50 min-h-screen flex flex-col justify-between items-center mainbody" id="mainbody">
-
-  <!-- Welcome Screen -->
-  <div id="welcome-screen" class="absolute inset-0 flex flex-col justify-center items-center bg-pink-200 text-center p-6 z-50">
-    <img src="https://cdn.rihimihi.com/16ac58c5e4af4cf6b8d3b901d9db24d5.gif" alt="Logo Icon" class="w-24 h-24 rounded-full shadow-lg mb-4">
-    <h1 class="text-3xl font-bold text-pink-900">Welcome to Rimi-Chan's Cozy Notebook!</h1>
-    <p class="text-pink-700 mt-2">Explore cute features and fun surprises on every page!</p>
-  </div>
-
-  <!-- Sticky Top Bar -->
-  <div class="sticky-top bg-pink-100 shadow-md w-full p-2 flex justify-between items-center text-pink-700 font-semibold">
-    <!-- Left side of the header: Icon and Name -->
-    <div class="header-left">
-      <img src="https://cdn.rihimihi.com/16ac58c5e4af4cf6b8d3b901d9db24d5.gif" alt="Logo Icon" class="rounded-xl shadow-md">
-      <span class="font-bold select-none">Rimi-Chan</span>
-    </div>
-
-    <!-- Right side of the header: Support and Invite buttons -->
-    <div class="header-right">
-      <a href="https://discord.com/invite/rimi/" class="cool-button">Support</a>
-      <a id="invite-link-text" href="https://discord.com/oauth2/authorize?client_id=1041746861297520660&scope=bot&permissions=532576332864&redirect_uri=https%3A%2F%2Fdiscord.gg%2FqUBs8HbSdC&response_type=code" class="cool-button invite-text">Invite Rimi-Chan</a>
-    </div>
-  </div>
-
-  <!-- Notebook Container -->
-  <div id="notebook" class="notebook-container hidden fade-in">
-       <!-- Controls for Page Turn -->
-    <div class="notebook-page" id="page">
-    </div>
-  <div class="page-controls hidden" id="controls">
-    <button id="prevBtn">Previous</button>
-    <button id="nextBtn"><span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-[#ca5283] opacity-75 top-0 right-1" id="ping-span"></span> Next</button>
-  </div>
-  </div>
-  <div class="page-number text-pink-700 hidden" id="pageNumber">Page 1 of 3</div>
-
-  <!-- Sticky Bottom Bar -->
-  <div class="sticky-bottom bg-pink-100 shadow-md w-full p-1 text-center text-pink-700 font-semibold">
-    <!-- Footer Links -->
-    <div class="footer-links">
-    <a href="https://docs.rimichan.com/terms">Terms & Conditions</a>
-    <a href="https://docs.rimichan.com/privacy">Privacy Policy</a>
-    <a class="mailtoui" href="mailto:RimiChanMoe@gmail.com">Contact</a>
-    <p>© 2024-2025 Rimi-Chan</p>
-  </div>
-
-<script>
-  function updateInviteText() {
-    const inviteLink = document.getElementById('invite-link-text');
-    if (window.innerWidth <= 600) {
-      inviteLink.textContent = 'Invite'; // Mobile view
-    } else {
-      inviteLink.textContent = 'Invite Rimi-Chan'; // Larger screens
-    }
-  }
-  
-  // Update the text on page load
-  updateInviteText();
-  
-  // Update the text whenever the window is resized
-  window.addEventListener('resize', updateInviteText);
-</script>
-  
-  <script>
-
-    // Store page content in an array
-    const pages = [
-
-// Page 8 - Yes, it supposed to be 8th page, but I moved it to first
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Explore & Create</h2>
-
-            <ul style="list-style: none; padding-left: 15px; font-size: 1rem; margin-bottom: 10px; border-radius: 8px; padding: 15px; color: #fff;">
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">🎁</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Receive 1,200 Stardust and 10 Wishing Stars for new players!</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">🎨</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Claim, customize, trade, and play to build your collection.</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">✍️</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Personalize cards with exclusive frames and inks.</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">🏆</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Join weekly global cosmetic contest with unique themes.</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">🎇</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Customize your album and enjoy seasonal events!</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">🎮</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Simple start commands, daily activities, and mini-games.</span>
-                </li>
-                <li style="margin-bottom: 10px; display: flex; align-items: center; font-weight: bold; color: #ff6b6b;">
-                    <span style="margin-right: 10px; background-color: transparent; color: #fff; padding: 8px; border-radius: 60%; font-size: 1rem;">💫</span>
-                    <span style="color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif;">Limited, Cosmetics, and Standard wish with pity system!</span>
-                </li>
+        <section class="section-card">
+            <h2 class="rimi-title">✨ Current Banner: Shattered Starlight ✨</h2>
+            <img src="https://cdn.rihimihi.com/294482186c794ae28229bba46ee7daa3.webp" class="rimi-img">
+            
+            <ul class="cute-list">
+                <li><div class="icon-circle">🎁</div> <span><b>New Player Bonus:</b> Receive 1,200 Stardust & 10 Wishing Stars!</span></li>
+                <li><div class="icon-circle">🎨</div> <span><b>Collect & Trade:</b> Build your dream collection with friends.</span></li>
+                <li><div class="icon-circle">✍️</div> <span><b>Customize:</b> Personalize cards with exclusive frames and inks.</span></li>
+                <li><div class="icon-circle">✨</div> <span><b>New Cosmetics:</b> Discover brand new frames, inks, and filters!</span></li>
+                <li><div class="icon-circle">🏆</div> <span><b>Compete:</b> Join weekly global cosmetic contests.</span></li>
+                <li><div class="icon-circle">🎇</div> <span><b>Seasonal Events:</b> Customize your album for holidays!</span></li>
+                <li><div class="icon-circle">🎮</div> <span><b>Fun Features:</b> Simple commands, daily activities, and mini-games.</span></li>
+                <li><div class="icon-circle">💫</div> <span><b>Fair Gacha:</b> Limited Wish systems include a pity system!</span></li>
             </ul>
-</section>`,
-// Page 1
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Seasonal Event Showcase</h2>
-    <img src="https://cdn.rihimihi.com/d7751a85cdbd435fbde11f452b43f281.webp" alt="Seasonal Event Cards Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);">
-    <img src="https://cdn.rihimihi.com/47f5ed35fca1460689b340dbcef53e92.webp" alt="Seasonal Event Cards Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);">
+        </section>
 
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.5em;">All of our Seasonal event cards are made by our Event Card Makers, with love, for you to love.</p>
-</section>`,
+        <section class="section-card" style="background-color: #fdfcfd;">
+            <h2 class="rimi-title">Animated & Alive! 🎀</h2>
+            <p class="rimi-text">Don't settle for static images. We have 11+ stunning Effects, all customizable for your favorite cards!</p>
+            <div class="image-grid-fx">
+                <img src="https://cdn.rihimihi.com/ef2d3e5135f34d1b9dc748eae69267a0.webp" class="rimi-img" alt="FX Demo 1">
+                <img src="https://cdn.rihimihi.com/24bde4276ab14aae83284f54ccb3bc74.webp" class="rimi-img" alt="FX Demo 2">
+                <img src="https://cdn.rihimihi.com/dc5542cf251d4495970823aa600e46ed.webp" class="rimi-img" alt="FX Demo 3">
+                <img src="https://cdn.rihimihi.com/a24594e482924bb09787f067088ca382.webp" class="rimi-img" alt="FX Demo 4">
+            </div>
+            <p class="rimi-text" style="font-size: 1.2rem; margin-top: 20px;">Use <code>.daily</code> and <code>.dailywish</code> to start earning rewards today!</p>
+        </section>
 
-// Page 2
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Card Customization</h2>
-    <img src="https://cdn.rihimihi.com/788ca65a281647d8979731aabce2777e.webp" alt="Card Customization Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
+        <section class="section-card">
+            <h2 class="rimi-title">Seasonal Event Showcase 🌸</h2>
+            <p class="rimi-text">All of our Seasonal event cards are made with love by our community artists.</p>
+            <img src="https://cdn.rihimihi.com/3e32d51ebf2e424dab5680f4f9e21e29.webp" class="rimi-img" style="margin-top: 20px;">
+            <img src="https://cdn.rihimihi.com/ace84853d66246be8a546266f51a0940.webp" class="rimi-img">
+            <img src="https://cdn.rihimihi.com/6b9f8a35f32f4c03bbea12226bb7902d.webp" class="rimi-img">
+        </section>
 
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.5em;">Design and personalize your cards using unique frames, inks, and filters. Let your creativity shine as you create the perfect card for your collection!</p>
-</section>`,
+        <iframe class="video-embed" src="https://rimichan.com/" frameborder="0" allowfullscreen></iframe>
 
-// Page 3
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Weekly Cosmetic Contest</h2>
-    <img src="https://cdn.rihimihi.com/627f53ec217045a7b3f5457e0543f0ce.webp" alt="CC Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
+        <div class="section-card">
+<h3 style="color: #ca5283; font-size: 1.8rem; margin-top: 30px;">Varied Banner System</h3>
+            <div class="image-grid-fx">
+                <img src="https://cdn.rihimihi.com/e5d25703c2f54e90ae59ba50a2da0700.webp" class="rimi-img">
+                <img src="https://cdn.rihimihi.com/4ca0b30fcaed4af6b8e0586fa7913a28.webp" class="rimi-img">
+                <img src="https://cdn.rihimihi.com/27d89e127fee482fb5d45f4b5fdfc705.webp" class="rimi-img">
+                <img src="https://cdn.rihimihi.com/ac350449a6594b5e98a5dc61f96c78ae.webp" class="rimi-img">
+            </div>
+        </div>
 
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.5em;">Customize unique cards based on a specific theme and showcase your creativity. Compete with other talented players and have a chance to win exciting rewards.</p>
-</section>`,
+        <section class="section-card">
+            <h2 class="rimi-title">Profiles, Albums & Wishes</h2>
+            <p class="rimi-text">Showcase your unique style with a fully customizable profile, organize your collection in albums, and pull from varied banners!</p>
+            
+            <div class="image-grid-fx" style="margin-top: 30px;">
+                 <img src="https://cdn.rihimihi.com/cbc6a793f49f42278afc1e605ba10d99.png" class="rimi-img" alt="Profile">
+                 <img src="https://cdn.rihimihi.com/53bd5ffe63624a0d835c5cfd62e6a4f4.png" class="rimi-img" alt="Album">
+            </div>
+        </section>
 
-// Page 4
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Wish Banner: Florabella</h2>
-    <img src="https://cdn.rihimihi.com/3343664fb33340a6b9edc7731b4e36a4.webp" alt="Florabella Wish Banner Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px; background-color: #070510;">
+        <div class="footer-bar">
+            <h2 style="font-size: 2.2rem; margin-bottom: 15px; color: white;">Ready to dive into Rimi's world?</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 30px; color: #ffd1dc;">Join thousands of collectors and start your journey of wishing, customizing, and collecting!</p>
+            
+            <a href="https://discord.com/oauth2/authorize?client_id=1041746861297520660&scope=bot&permissions=532576332864" class="invite-button" style="background: white; color: #c24a77 !important; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
+                Add Rimi-Chan to Discord
+            </a>
+             <p style="font-size: 1.1rem; margin-top: 30px; opacity: 0.8;">Need help? Use <code>.support</code> in your server!</p>
+        </div>
 
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.5em;">Limited, Cosmetics, and Standard Wish systems with a pity system and much more!</p>
-</section>`,
-
-// Page 5
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Wish Showcase</h2>
-    <img src="https://cdn.rihimihi.com/de6b0326821d4a7283f64d973bc93a60.png" alt="Wish Banner" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
-
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.2em;">Explore the different banners, from Limited to Standard, and discover unique characters and cosmetics. There's something for everyone!</p>
-</section>`,
-
-// Page 6
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Beautiful Profile Customization</h2>
-    <img src="https://cdn.rihimihi.com/cbc6a793f49f42278afc1e605ba10d99.png" alt="Profile Customization Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
-
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.4em;">Showcase your unique style with a fully customizable profile. Unlock cosmetics and create a stunning collection to share with friends!</p>
-</section>`,
-
-// Page 7
-`        <section style="padding: 20px; margin-bottom: 15px;  border-radius: 8px; box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.05);" class="text-center fade-in2">
-    <h2 style="font-size: 1.6rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; margin-bottom: 15px; font-weight: bold;">Album Customization</h2>
-    <img src="https://cdn.rihimihi.com/53bd5ffe63624a0d835c5cfd62e6a4f4.png" alt="Album Customization Demo" style="max-width: 100%; border-radius: 8px; margin-bottom: 15px;">
-
-    <p style="font-size: 1rem; color: #ca5283; font-family: 'Comic Sans MS', cursive, sans-serif; font-weight: normal; margin-bottom: 10px; line-height: 1.2em;">Organize your collection with a customizable album. Participate in seasonal events and earn exclusive rewards!</p>
-</section>`,
-    ];
-    let currentPage = 0;
-    const totalPages = 8; // no need, just here anyways
-    const notebook = document.getElementById('notebook');
-    const controls = document.getElementById('controls');
-    const pageNumber = document.getElementById('pageNumber');
-
-    // Wait 2 seconds and then fade out the welcome screen
-    window.onload = function () {
-      setTimeout(() => {
-        const welcomeScreen = document.getElementById('welcome-screen');
-        
-        // Add fade-out effect
-        welcomeScreen.classList.add('fade-out');
-        
-        // After the animation ends, hide the welcome screen and show the notebook and controls
-        welcomeScreen.addEventListener('animationend', () => {
-        welcomeScreen.style.display = 'none';
-          notebook.classList.remove('hidden');
-          controls.classList.remove('hidden');
-          pageNumber.classList.remove('hidden');
-          showPage(currentPage);
-        });
-      }, 2000);
-    };
-
-    // Function to update the page number display
-    function updatePageNumber() {
-      pageNumber.innerText = `Page ${currentPage+1} of ${pages.length}`;
-    }
-
-    // Show the current page with animation
-    // has plan for page turn animation but its too hard so removed for now
-    function showPage(index, direction = 'right') {
-        updatePageNumber();
-        pageContent = document.getElementById(`page`)
-        pageContent.innerHTML = pages[index];
-        if (index!== 0){
-        document.getElementById('ping-span').classList = null;
-        }
-    }
-
-
-    // Page turning logic
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      if (currentPage > 0) {
-        currentPage--;
-        showPage(currentPage, 'left');
-      }
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      if (currentPage < pages.length - 1) {
-        currentPage++;
-        showPage(currentPage, 'right');
-      }
-    });
-
-    function preload_image(im_url) {
-        let img = new Image();
-        img.src = im_url;
-      }
-    const images = [
-        "https://cdn.rihimihi.com/47f5ed35fca1460689b340dbcef53e92.webp",
-        "https://cdn.rihimihi.com/d7751a85cdbd435fbde11f452b43f281.webp",
-        "https://cdn.rihimihi.com/788ca65a281647d8979731aabce2777e.webp",
-        "https://cdn.rihimihi.com/627f53ec217045a7b3f5457e0543f0ce.webp",
-        "https://cdn.rihimihi.com/3343664fb33340a6b9edc7731b4e36a4.webp",
-        "https://cdn.rihimihi.com/de6b0326821d4a7283f64d973bc93a60.png",
-        "https://cdn.rihimihi.com/cbc6a793f49f42278afc1e605ba10d99.png",
-        "https://cdn.rihimihi.com/53bd5ffe63624a0d835c5cfd62e6a4f4.png"
-    ]
-
-    for (let i = 0; i < images.length; i++) {
-        preload_image(images[i]);
-    }
-  </script>
-
-<script src="https://cdn.jsdelivr.net/npm/mailtoui@1.0.3/dist/mailtoui-min.js"></script>
-</body>
-</html>
+    </div>
+</div>
